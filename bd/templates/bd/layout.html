@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'bd/css/main.css' %}">
+    {% block links %}
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<header>
+    <ul id="navbar">
+        <li><a href="{% url 'home' %}">Главная страница</a></li>
+        <li><a href="{% url 'courses' %}">Курсы</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'timetable' %}">Расписание</a></li>
+        <li><a href="{% url 'authors' %}">Авторы</a></li>
+        <li><a href="{% url 'user_profile' %}">{{ request.user.username }}</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Вход</a></li>
+        {% endif %}
+
+
+    </ul>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    <h3>сайт создан в образовательных целях.</h3>
+    <h3>создатели сайта студенты группы ИВТАП-22:</h3>
+    <ul id="foot-links">
+        <li><a href="https://vk.com/renzalez">Ренжина А.С.</a></li>
+        <li><a href="https://vk.com/mrtrahoff">Матюнин И.С.</a></li>
+    </ul>
+</footer>
+</body>
+</html>

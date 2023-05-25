@@ -1,0 +1,30 @@
+.del{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    align-items: center;
+    margin: 20% 0 0 0;
+}
+.del h1{
+     margin-top:2%;
+     color:#0c4751;
+}
+
+.del a{
+    width:10%;
+    background:#6fc0bc;
+    padding:1%;
+    border:1px solid #00423c;
+    border-radius:10px;
+    color: #426186;
+    font-size:120%;
+    text-align:center;
+    text-decoration:none;
+    margin-top:2%;
+}
+.del a:hover{
+    background: linear-gradient(45deg, #a9dabe, #6fc0bc);
+    cursor:pointer;
+}
+

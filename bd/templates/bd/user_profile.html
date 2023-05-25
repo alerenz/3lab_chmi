@@ -1,0 +1,30 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/user_profile.css' %}">
+{% endblock %}
+{% block title %}{{ request.user.username }}{% endblock %}
+
+{% block content %}
+<div class="user_info">
+ <h1>{{ request.user.username }}</h1>
+ {% if role == 'admin' %}
+ <a href="{% url 'output_favorite_course' %}"><div class="info-content">Избранное</div></a>
+ <a href="{% url 'admin_authors' %}"><div class="info-content">Панель авторы</div></a>
+ <a href="{% url 'admin_courses' %}"><div class="info-content">Панель курсы</div></a>
+ <a href="{% url 'admin_usercourses' %}"><div class="info-content">Панель избранное</div></a>
+ {% elif role == 'user' %}
+ <a href="{% url 'output_favorite_course' %}"><div class="info-content">Избранное</div></a>
+ <a href="{% url 'set_author' %}"><div class="info-content">стать автором</div></a>
+ {% elif role == 'avtors' and not is_autor %}
+ <a href="{% url 'output_favorite_course' %}"><div class="info-content">Избранное</div></a>
+ <a href="{% url 'author_create' %}"><div class="info-content">Заполнить информацию о себе</div></a>
+ {% elif role == 'avtors' and is_autor %}
+ <a href="{% url 'output_favorite_course' %}"><div class="info-content">Избранное</div></a>
+ <a href="{% url 'output_author_course' %}"><div class="info-content">мои курсы</div></a>
+ <a href="{% url 'course_create' %}"><div class="info-content">создать курс</div></a>
+ {% endif %}
+ <a href="{% url 'logout' %}"><div class="btn">Выйти из профиля</div></a>
+</div>
+{% endblock %}

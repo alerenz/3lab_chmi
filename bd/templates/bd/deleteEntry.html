@@ -1,0 +1,16 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/delete.css' %}">
+{% endblock %}
+ {% block title %}Подтверждение удаления{% endblock %}
+
+{% block content %}
+<div class="del">
+    <h1>Вы действительно хотите удалить?</h1>
+    {% csrf_token %}
+    <a href="{% url 'delete_course' course.id %}">Удалить</a>
+    <a onclick="history.back()">Назад</a>
+    </div>
+{% endblock %}

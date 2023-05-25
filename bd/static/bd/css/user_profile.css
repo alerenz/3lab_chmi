@@ -1,0 +1,40 @@
+.user_info {
+    height: 35%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5%;
+    background: #00423c;
+    border-radius: 50px;
+}
+
+.user_info h1 {
+    color: white;
+}
+
+.user_info a {
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+    background: #C8F4EC;
+    color: #2F5B90;
+    width: 50%;
+    height: 17%;
+    margin-top:10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    transition: 0.5s;
+}
+
+.user_info a:hover{
+    transform: scale(1.1);
+    cursor: pointer
+}
+
+.user_info a:last-child {
+    background: white;
+}

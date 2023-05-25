@@ -1,0 +1,34 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/admin_panel.css' %}">
+{% endblock %}
+{% block title %}Все избранное{% endblock %}
+
+{% block content %}
+<div class="osnova">
+<h3>Избранное</h3>
+ <table>
+  <tr>
+   <th>Пользователь</th>
+   <th>Курс</th>
+  </tr>
+   {% for el in usr_crs %}
+   <tr>
+    <td>{{el.id_user}}</td>
+    <td>{{el.id_course}}</td>
+    <td>
+     <a href="{% url 'delete_usrcrs' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+</div>
+{% endblock %}

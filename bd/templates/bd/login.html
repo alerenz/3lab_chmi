@@ -1,0 +1,23 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/login.css' %}">
+{% endblock %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Вход</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for el in form %}
+                {{ el }}
+                <div class="form-error">{{ el.errors }}</div>
+            {% endfor %}
+            <button type="submit">ВОЙТИ</button>
+        </form>
+        <a href="{% url 'register' %}">Регистрация</a>
+    </div>
+{% endblock %}

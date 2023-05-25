@@ -1,0 +1,20 @@
+{% extends 'bd/layout.html' %}
+
+ {% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<div class="cnt">
+  <div class="image">
+   <img src="static/bd/img/ICON.png">
+  </div>
+   <div class="txt">
+       <h2>Учеба сегодня - не проблема! <br>Получите новые знания вместе с <br>Course Free!</h2>
+       {% if request.user.is_authenticated %}
+       <button><a href="{% url 'courses' %}">Записаться на курс!</a></button>
+       {% else %}
+       <button><a href="{% url 'register' %}">Записаться на курс!</a></button>
+       {% endif %}
+   </div>
+</div>
+{% endblock %}

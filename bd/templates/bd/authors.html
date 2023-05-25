@@ -1,0 +1,25 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/authors.css' %}">
+{% endblock %}
+ {% block title %}Авторы{% endblock %}
+
+{% block content %}
+<div class="authors">
+  {% for el in authors %}
+  <div class="author_info">
+    <div class="logo">
+      <img src="static/bd/img/ICON.png">
+    </div>
+    <div class="row_container">
+      <div class="row"><h2>Фамилия: </h2><h3>{{el.surname}}</h3></div>
+      <div class="row"><h2>Имя: </h2><h3>{{el.name}}</h3></div>
+      <div class="row"><h2>Почта: </h2><h3>{{el.email}}</h3></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

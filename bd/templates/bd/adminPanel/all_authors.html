@@ -1,0 +1,45 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/admin_panel.css' %}">
+{% endblock %}
+{% block title %}Все авторы{% endblock %}
+
+{% block content %}
+<div class="osnova">
+<h3>Авторы</h3>
+ <table>
+  <tr>
+   <th>Фамилия</th>
+   <th>Имя</th>
+   <th>Email</th>
+  </tr>
+   {% for el in authors %}
+   <tr>
+    <td>{{el.surname}}</td>
+    <td>{{el.name}}</td>
+    <td>{{el.email}}</td>
+    <td>
+     <a href="{% url 'delete_author' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_author' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+</div>
+{% endblock %}

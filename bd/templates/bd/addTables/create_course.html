@@ -1,0 +1,32 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/login.css' %}">
+{% endblock %}
+
+{% block title %}Курс{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Создать курс</h1>
+        <form method="post">
+            {% csrf_token %}
+                {{ form.header }}
+                <div class="form-error">{{ form.header.errors }}</div>
+                {{ form.description }}
+                <div class="form-error">{{ form.description.errors }}</div>
+                {{ form.main_text }}
+                <div class="form-error">{{ form.main_text.errors }}</div>
+                {{ form.start_date }}
+                <div class="form-error">{{ form.start_date.errors }}</div>
+                {{ form.end_date }}
+                <div class="form-error">{{ form.end_date.errors }}</div>
+                {% if request.user.is_authenticated %}
+                {{ form.id_author }}
+                {% endif %}
+            <button type="submit">Сохранить</button>
+        </form>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/admin_panel.css' %}">
+{% endblock %}
+{% block title %}Все курсы{% endblock %}
+
+{% block content %}
+<div class="osnova">
+<h3>Курсы</h3>
+ <table>
+  <tr>
+   <th>Название</th>
+   <th>Описание</th>
+   <th>Текст</th>
+   <th>Начало курса</th>
+   <th>Конец курса</th>
+   <th>Автор</th>
+  </tr>
+   {% for el in courses %}
+   <tr>
+    <td>{{el.header}}</td>
+    <td>{{el.description}}</td>
+    <td>{{el.main_text}}</td>
+    <td>{{el.start_date}}</td>
+    <td>{{el.end_date}}</td>
+    <td>{{el.id_author}}</td>
+    <td>
+     <a href="{% url 'delete_course' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_course_admin' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+</div>
+{% endblock %}

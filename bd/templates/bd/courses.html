@@ -1,0 +1,27 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/courses.css' %}">
+{% endblock %}
+
+ {% block title %}Курсы{% endblock %}
+
+{% block content %}
+
+<div class="courses">
+  {% for el in courses %}
+  <div class="course">
+    <h2>{{el.header}}</h2>
+    <h3>{{el.description}}</h3>
+    <h3>{{el.id_author}}</h3>
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'course_only' pk=el.id %}">Читать курс</a>
+    {% else %}
+      <a href="{% url 'login' %}">Читать курс</a>
+  {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

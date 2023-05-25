@@ -1,0 +1,29 @@
+{% extends 'bd/layout.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'bd/css/login.css' %}">
+{% endblock %}
+
+{% block title %}Автор{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Создать информацию об авторе</h1>
+        <form method="post">
+            {% csrf_token %}
+                {% if request.user.is_authenticated %}
+                {{ form.id_user }}
+                {% endif %}
+                <div class="form-error">{{ form.id_user.errors }}</div>
+                {{ form.surname }}
+                <div class="form-error">{{ form.surname.errors }}</div>
+                {{ form.name }}
+                <div class="form-error">{{ form.name.errors }}</div>
+                {{ form.email }}
+                <div class="form-error">{{ form.email.errors }}</div>
+            <button type="submit">Сохранить</button>
+        </form>
+
+    </div>
+{% endblock %}
